@@ -1,2 +1,2 @@
 # vim-fern-utils
-Just some vim stull
+Just some vim stuff
