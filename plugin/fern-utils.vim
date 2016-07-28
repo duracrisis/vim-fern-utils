@@ -78,6 +78,4 @@ function! HexMe()
     endif
 endfunction
 
-
-
 " vim600: set foldmethod=marker foldlevel=0 :
