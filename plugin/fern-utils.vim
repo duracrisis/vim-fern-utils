@@ -21,6 +21,7 @@ map <C-down> 5j
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>tl :Tlist<CR>
 map <leader>gg :silent grep -r 
+map <leader>rv :!./gen_from_md.py %:p<CR>
 
 " Section: Functions {{{1
 
