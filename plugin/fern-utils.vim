@@ -18,8 +18,8 @@ map <f6> q
 map <f7> @q
 map <C-up> 5k
 map <C-down> 5j
-map <leader>nt :NERDTreeToggle<CR>
-map <leader>tl :Tlist<CR>
+map <leader>le :Lexplore<CR>
+map <leader>tl :TlistOpen<CR>
 map <leader>gg :silent grep -r 
 map <leader>rv :!./gen_from_md.py %:p<CR>
 
@@ -32,7 +32,7 @@ function! LoadCscope()
     if (!empty(db))
         let path = strpart(db, 0, match(db, "/cscope.out$"))
         set nocscopeverbose " suppress 'duplicate conneciton' error
-        exec "cs add " . db . " " . path
+        exec "cs add " . db . " " . path . "${PWD}"
         set cscopeverbose
     endif
 
@@ -52,11 +52,6 @@ endfunction
 command! Mandy :call MakeAndroid() <CR>
 map <leader>ma :Mandy<CR>
 
-
-function! DevSetup()
-  :NERDTreeToggle<CR>
-  :Tlist
-endfunction
 
 function! Today()
    :exe ":normal o=" . strftime("%c") . "=" 
@@ -78,5 +73,11 @@ function! HexMe()
         let $in_hex=1
     endif
 endfunction
+
+function! FromMarkdownToPlain() range
+    :silent '<,'>!pandoc -t plain
+endfunction
+
+command! -range ToPlain call FromMarkdownToPlain()
 
 " vim600: set foldmethod=marker foldlevel=0 :
